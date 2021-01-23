@@ -27,16 +27,16 @@ export const sortData=(data)=>{
      })
      return sorteddata;
 }
-export const showmapdata=(data,casesType)=>(
+export const showmapdata=(data,caseType)=>(
     data.map(country=>(
         <Circle
         center={[country.countryInfo.lat, country.countryInfo.long]}
         fillOpacity={0.4}
         weight={1}
-        color={caseTypecolor[casesType].hex}
-        fillColor={caseTypecolor[casesType].hex}
+        color={caseTypecolor[caseType].hex}
+        fillColor={caseTypecolor[caseType].hex}
         radius={
-            Math.sqrt(country[casesType])*caseTypecolor[casesType].multiplier
+            Math.sqrt(country[caseType])*caseTypecolor[caseType].multiplier
         }
         >
        <Popup>

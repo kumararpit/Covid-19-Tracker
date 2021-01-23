@@ -13,7 +13,7 @@ function App() {
     const [countryInfo,setcountryInfo]=useState({});
     const [tabledata,settabledata]=useState([]);
     const[mapcenter,setmapcenter]=useState({lat:34.80746, lng:-40.4796});
-    const [mapzoom,setmapzoom]=useState(2);
+    const [mapzoom,setmapzoom]=useState(3);
     const[mapcountry,setmapcountry]=useState([])
     const[casesType,setcasesType]=useState("cases");
     useEffect(()=>{
@@ -51,8 +51,7 @@ function App() {
               setcountry(getcountrycode);
               setcountryInfo(data);
               setmapcenter([data.countryInfo.lat, data.countryInfo.long]);
-              console.log(mapcenter)
-              setmapzoom(3)
+              setmapzoom(4)
       })
     }
   return (
@@ -61,7 +60,7 @@ function App() {
     <div className="heading_top">
      <h3>Covid-19 Tracker</h3>
      <FormControl>
-     <Select variant="outlined" value={country}  onChange={(e)=>selectcountry(e)} >
+     <Select variant="outlined" value={country}  onChange={selectcountry} >
           <MenuItem value="worldwide">Worldwide</MenuItem>
          {
                countries.map((country)=>(
