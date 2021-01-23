@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+  scrollbar-width: thin;
+    scrollbar-color: rgb(117, 13, 13) , white;
+}
+.app{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+  background-color: rgb(218, 220, 221);
+}
+.heading_top,.case_tiles{
+  display: flex;
+  justify-content: space-between;
+}
+@media(max-width:990px){
+  .app{
+    flex-direction: column;
+  }
+}
+.left_part{
+  flex: 0.9;
+}
+.right_part{
+  text-align: center;
+}
+.right_part h4{
+  text-align: center;
+  margin: 20px 0;
+}
