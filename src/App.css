@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 *{
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
@@ -15,6 +16,11 @@
 .heading_top{
   display: flex;
   justify-content: space-between;
+}
+.heading_top h3{
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px !important;
+  color: rgb(82, 79, 79);
 }
 @media(max-width:990px){
   .app{

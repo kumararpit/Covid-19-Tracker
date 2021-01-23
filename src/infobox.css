@@ -1,9 +1,10 @@
-.card_info{
+.infobox{
     flex: 1;
-    border-radius: 20px !important;
     margin-top: 1rem;
+    box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
+    border-radius: 15px !important;
 }
-.card_info:not(:last-child){
+.infobox:not(:last-child){
     margin-right: 10px;
 }
 .infobox_cases{
@@ -24,3 +25,22 @@
     font-size: 1rem !important;
     margin-bottom: 5px !important;
 }
+.infobox--selected {
+    border-top: 10px solid greenyellow;
+    border-bottom: none;
+  }
+  
+  .infobox--red {
+    border-color: red;
+  }
+  .infobox--brown {
+    border-color:brown;
+  }
+  
+  .infobox_cases--green {
+    color: lightgreen !important;
+  }
+  .infobox_cases--brown{
+      color: rgb(228, 117, 117) !important;
+  }
+  

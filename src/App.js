@@ -61,7 +61,7 @@ function App() {
     <div className="heading_top">
      <h3>Covid-19 Tracker</h3>
      <FormControl>
-     <Select variant="outlined" value={country}  onChange={(e)=>selectcountry(e)}>
+     <Select variant="outlined" value={country}  onChange={(e)=>selectcountry(e)} >
           <MenuItem value="worldwide">Worldwide</MenuItem>
          {
                countries.map((country)=>(
@@ -72,19 +72,24 @@ function App() {
         </FormControl>
     </div>
     <div className="case_tiles">
-       <Casetile className="info_tiles" 
+       <Casetile className="info_tiles"
+       active={casesType==="cases"} 
+       isred
       onClick={(e)=>setcasesType("cases")}
        title="Coronavirus cases" 
        cases={formatstat(countryInfo.todayCases)} 
        Total={`${formatstat(countryInfo.cases)} Total`}
         />
        <Casetile className="info_tiles"
+        active={casesType==="recovered"}
         onClick={(e)=>setcasesType("recovered")}
         title="Recovery" 
         cases={formatstat(countryInfo.todayRecovered)} 
         Total={`${formatstat(countryInfo.recovered)} Total`}
         />
        <Casetile className="info_tiles" 
+        active={casesType==="deaths"} 
+        isbrown
         onClick={(e)=>setcasesType("deaths")}
        title="Deaths" 
        cases={formatstat(countryInfo.todayDeaths)} 
