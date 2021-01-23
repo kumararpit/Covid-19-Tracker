@@ -1,6 +1,20 @@
 import React, { useEffect ,useState} from 'react'
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
+const caseTypecolor={
+  cases:{
+      hex:"#cc1034",
+      rgb: "rgba(204, 16, 52, 0.5)",
+  },
+  recovered:{
+      hex:"#7dd71d",
+      rgb: "rgba(125, 215, 29,0.5)",
+  },
+  deaths:{
+      hex:"#fb4443",
+      rgb: "rgba(251, 68, 67,0.5)",
+  }
+}
 const options = {
     legend: {
       display: false,
@@ -87,9 +101,10 @@ const options = {
             data={{
               datasets: [
                 {
-                  backgroundColor: "rgba(204, 16, 52, 0.5)",
-                  borderColor: "#CC1034",
+                  backgroundColor:`${caseTypecolor[casesType].rgb}` ,
+                  borderColor:`${caseTypecolor[casesType].hex}`,
                   data: data,
+                  borderWidth:1,
                 },
               ],
             }}

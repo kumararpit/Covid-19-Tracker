@@ -3,7 +3,7 @@ import { Card,CardContent} from '@material-ui/core';
 import Casetile from './Cases_tiles'
 import Map from './Map';
 import Table from './Table'
-import {sortData} from './untile.js';
+import {sortData, formatstat} from './untile.js';
 import Livegraph from './Livegraph'
 import "./App.css";
 import { Select ,MenuItem,FormControl} from '@material-ui/core';
@@ -13,7 +13,9 @@ function App() {
     const [countryInfo,setcountryInfo]=useState({});
     const [tabledata,settabledata]=useState([]);
     const[mapcenter,setmapcenter]=useState({lat:34.80746, lng:-40.4796});
-    const [mapzoom,setmapzoom]=useState(2)
+    const [mapzoom,setmapzoom]=useState(2);
+    const[mapcountry,setmapcountry]=useState([])
+    const[casesType,setcasesType]=useState("cases");
     useEffect(()=>{
         fetch('https://disease.sh/v3/covid-19/all')
         .then((response)=>response.json())
@@ -31,6 +33,7 @@ function App() {
                  value: country.countryInfo.iso2
              }));
              const sorteddata=sortData(data);
+             setmapcountry(data);
              settabledata(sorteddata);
              setcountries(countries);
          })
@@ -69,18 +72,37 @@ function App() {
         </FormControl>
     </div>
     <div className="case_tiles">
-       <Casetile title="Coronavirus cases" cases={countryInfo.todayCases} Total={`${countryInfo.cases} Total`} />
-       <Casetile title="Recovery" cases={countryInfo.todayRecovered} Total={`${countryInfo.recovered} Total`}/>
-       <Casetile title="Deaths" cases={countryInfo.todayDeaths} Total={`${countryInfo.deaths} Total`} /> 
+       <Casetile className="info_tiles" 
+      onClick={(e)=>setcasesType("cases")}
+       title="Coronavirus cases" 
+       cases={formatstat(countryInfo.todayCases)} 
+       Total={`${formatstat(countryInfo.cases)} Total`}
+        />
+       <Casetile className="info_tiles"
+        onClick={(e)=>setcasesType("recovered")}
+        title="Recovery" 
+        cases={formatstat(countryInfo.todayRecovered)} 
+        Total={`${formatstat(countryInfo.recovered)} Total`}
+        />
+       <Casetile className="info_tiles" 
+        onClick={(e)=>setcasesType("deaths")}
+       title="Deaths" 
+       cases={formatstat(countryInfo.todayDeaths)} 
+       Total={`${formatstat(countryInfo.deaths)} Total`}  
+        /> 
     </div>
-      <Map center={mapcenter} zoom={mapzoom} />
+      <Map caseType={casesType} 
+      center={mapcenter} 
+      zoom={mapzoom} 
+      countries={mapcountry} 
+      />
       </div>
       <Card className="right_part">
          <CardContent>
            <h4> Live cases by countries</h4>
           <Table countries={tabledata} />
-          <h4>Worldwide new cases</h4>
-          <Livegraph casesType="cases"/>
+          <h4>Worldwide new {casesType}</h4>
+          <Livegraph casesType={casesType}/>
          </CardContent>
       </Card>
     </div>

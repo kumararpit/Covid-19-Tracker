@@ -9,9 +9,10 @@
   display: flex;
   justify-content: space-evenly;
   padding: 15px;
-  background-color: rgb(218, 220, 221);
+  background-color: rgb(253, 254, 255);
+ max-height: 100vh;
 }
-.heading_top,.case_tiles{
+.heading_top{
   display: flex;
   justify-content: space-between;
 }
@@ -29,4 +30,12 @@
 .right_part h4{
   text-align: center;
   margin: 20px 0;
+}
+.case_tiles{
+ display: flex;
+ flex: 1;
+ justify-content: space-between;
+}
+.info_tiles{
+  flex: 1;
 }
